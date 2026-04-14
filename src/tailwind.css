@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Override button shapes to pill */
+@layer utilities {
+  .btn-pill,
+  .btn-brass,
+  .btn-ghost,
+  .btn-outline-brass,
+  .nav-buy {
+    border-radius: 9999px !important;
+  }
+
+  /* Slightly rounded cards (less boxy than the current 2px radius) */
+  .recipe-card,
+  .gift-card,
+  .bar-card,
+  .pillar-card {
+    border-radius: 14px !important;
+  }
+}
