@@ -53,13 +53,15 @@ Push to `main` → GitHub Pages publishes to
 
 ## Before committing
 
-Always rebuild Tailwind before pushing changes that touch
-`src/tailwind.css` or `tailwind.config.js`:
+**Always rebuild Tailwind before pushing** changes that touch
+`src/tailwind.css` or `tailwind.config.js` — the compiled output in
+`assets/tailwind.css` is what ships to production:
 
 ```sh
 npm run build:css
 git add assets/tailwind.css
 ```
 
-The `Tailwind build check` GitHub Action will fail the build if the
-committed `assets/tailwind.css` is not a fresh rebuild of the source.
+There is no CI step that catches a forgotten rebuild. If you forget,
+the live site will keep serving the previous `assets/tailwind.css`
+until you push a fresh build.
