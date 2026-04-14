@@ -1,9 +1,51 @@
 <!DOCTYPE html>
-<!-- saved from url=(0047)file:///C:/Users/Jacki/Downloads/UPLOAD_ME.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="en"><head><meta charset="UTF-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Handsome Host</title>
+  <title>The Handsome Host — Hosting For Men Made Simple, Funny & Stress-Free</title>
+  <meta name="description" content="The Handsome Host by Jacalyn Stames — a witty, illustrated guide that turns the man in your life into a confident, gracious host. The perfect gift for birthdays, holidays, and housewarmings.">
+  <link rel="canonical" href="https://thehandsomehost.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="book">
+  <meta property="og:title" content="The Handsome Host — Hosting For Men Made Simple, Funny & Stress-Free">
+  <meta property="og:description" content="A witty, illustrated guide by Jacalyn Stames that turns the man in your life into a confident, gracious host. The perfect gift.">
+  <meta property="og:url" content="https://thehandsomehost.com/">
+  <meta property="og:site_name" content="The Handsome Host">
+  <meta property="og:image" content="https://thehandsomehost.com/og-cover.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Handsome Host">
+  <meta name="twitter:description" content="Hosting For Men Made Simple, Funny & Stress-Free — the perfect gift, now on Amazon.">
+  <meta name="twitter:image" content="https://thehandsomehost.com/og-cover.jpg">
+
+  <!-- Favicon (inline SVG) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%230D1F3C'/%3E%3Ctext x='50%25' y='58%25' text-anchor='middle' font-family='Georgia,serif' font-size='38' font-style='italic' font-weight='600' fill='%23F5F0E8'%3EH%3C/text%3E%3C/svg%3E">
+
+  <!-- JSON-LD: Book schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    "name": "The Handsome Host",
+    "author": { "@type": "Person", "name": "Jacalyn Stames" },
+    "illustrator": { "@type": "Person", "name": "Ryan T. Huang" },
+    "description": "Hosting For Men Made Simple, Funny and Stress-Free. A witty, illustrated guide that turns the man in your life into a confident, gracious host.",
+    "url": "https://thehandsomehost.com/",
+    "inLanguage": "en",
+    "workExample": {
+      "@type": "Book",
+      "isbn": "B0G3XLM6QB",
+      "bookFormat": "https://schema.org/Paperback",
+      "potentialAction": {
+        "@type": "BuyAction",
+        "target": "https://www.amazon.com/Handsome-Host-Revised-Jacalyn-Stames/dp/B0G3XLM6QB/"
+      }
+    }
+  }
+  </script>
+
   <link href="https://thehandsomehost.com/UPLOAD_ME_files/css2" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -71,6 +113,32 @@
       transition:background .25s, transform .2s;
     }
     .nav-buy:hover { background:var(--brass-lt); transform:translateY(-1px); }
+    .nav-toggle {
+      display:none; background:none; border:none; cursor:pointer;
+      padding:.5rem; width:44px; height:44px;
+      flex-direction:column; justify-content:center; gap:4px;
+    }
+    .nav-toggle span {
+      display:block; width:22px; height:2px; background:var(--ivory);
+      transition:transform .25s, opacity .25s;
+    }
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform:translateY(6px) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity:0; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform:translateY(-6px) rotate(-45deg); }
+
+    /* Skip nav link */
+    .skip-nav {
+      position:absolute; left:-9999px; top:0; z-index:300;
+      background:var(--white); color:var(--navy); padding:.75rem 1.25rem;
+      font-size:.85rem; font-weight:600; text-decoration:none;
+    }
+    .skip-nav:focus { left:1rem; top:1rem; }
+
+    /* Focus styles for keyboard users */
+    a:focus-visible, button:focus-visible {
+      outline:2px solid var(--brass); outline-offset:3px;
+      border-radius:2px;
+    }
 
     /* ─── HERO ─── */
     .hero {
@@ -411,7 +479,7 @@
       font-size:.97rem; color:rgba(245,240,232,.55); font-weight:300;
       max-width:460px; margin:0 auto 2.8rem; line-height:1.75;
     }
-    .fine-print { display:block; margin-top:2rem; font-size:.68rem; letter-spacing:.12em; color:rgba(245,240,232,.2); text-transform:uppercase; }
+    .fine-print { display:block; margin-top:2rem; font-size:.78rem; letter-spacing:.12em; color:rgba(245,240,232,.65); text-transform:uppercase; }
 
     /* Stars row */
     .stars-row { display:flex; justify-content:center; gap:.3rem; margin-bottom:2rem; }
@@ -434,8 +502,24 @@
 
     /* ─── RESPONSIVE ─── */
     @media (max-width:960px) {
-      nav { padding:1rem 2rem; }
-      .nav-links .nav-link { display:none; }
+      nav { padding:1rem 1.5rem; }
+      .nav-toggle { display:flex; }
+      .nav-links {
+        display:none; position:absolute; top:100%; left:0; right:0;
+        flex-direction:column; align-items:stretch; gap:0;
+        background:rgba(13,31,60,.98); backdrop-filter:blur(12px);
+        padding:1rem 1.5rem 1.5rem;
+        border-bottom:1px solid rgba(201,168,76,.2);
+      }
+      .nav-links.open { display:flex; }
+      .nav-links .nav-link {
+        display:block; padding:.9rem 0; font-size:.9rem;
+        border-bottom:1px solid rgba(245,240,232,.08);
+        color:var(--ivory);
+      }
+      .nav-links .nav-buy {
+        margin-top:1rem; text-align:center; padding:.85rem 1rem;
+      }
       .hero { grid-template-columns:1fr; min-height:auto; }
       .hero-left { padding:4rem 2.5rem 2rem; }
       .hero-right { padding:2rem 2.5rem 5rem; }
@@ -705,9 +789,9 @@
     }
     .btn-outline-brass {
       display:inline-flex; align-items:center; gap:.7rem;
-      background:transparent; color:var(--ivory);
-      border:1.5px solid rgba(255,255,255,.3); padding:.95rem 3rem;
-      font-family:'Jost',sans-serif; font-size:.8rem; letter-spacing:.2em;
+      background:transparent; color:#fff;
+      border:1.5px solid rgba(255,255,255,.6); padding:.95rem 3rem;
+      font-family:'Jost',sans-serif; font-size:.85rem; letter-spacing:.2em;
       text-transform:uppercase; font-weight:600; text-decoration:none;
       transition:background .25s, color .25s, border-color .25s, transform .2s;
     }
@@ -718,18 +802,25 @@
 </head>
 <body>
 
+<a class="skip-nav" href="#main">Skip to content</a>
+
 <!-- ─── NAV ─── -->
 <nav>
   <div class="nav-logo">The Handsome Host</div>
-  <div class="nav-links">
-    <a class="nav-link" href="file:///C:/Users/Jacki/Downloads/UPLOAD_ME.html#about">About</a>
-    <a class="nav-link" href="file:///C:/Users/Jacki/Downloads/UPLOAD_ME.html#gift-ideas">Gift Ideas</a>
-    <a class="nav-link" href="file:///C:/Users/Jacki/Downloads/UPLOAD_ME.html#inside">Inside</a>
-    <a class="nav-link" href="file:///C:/Users/Jacki/Downloads/UPLOAD_ME.html#author">Author</a>
+  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="nav-links">
+    <a class="nav-link" href="#about">About</a>
+    <a class="nav-link" href="#gift-ideas">Gift Ideas</a>
+    <a class="nav-link" href="#inside">Inside</a>
+    <a class="nav-link" href="#author">Author</a>
     <a class="nav-buy" href="https://www.amazon.com/Handsome-Host-Revised-Jacalyn-Stames/dp/B0G3XLM6QB/ref=sr_1_1?crid=2IPEKRBD4NA34&amp;dib=eyJ2IjoiMSJ9.lgtG6qMH32erxY5hNhomSFRn3GMLyqIR24RBL49eHB_693AFgCeqZomQa9UXdHju1RswtkzKTIG5HvaPsXB-RWH6S5Ie_eGwF4bXnrvShvdA55nzsP9ogxSQXuymcDRj5GxZbPPjGfEYGDpmhcz1_mvudZ22oIWhEQp6y5qStoyEl4nF7SbEbJvIvtEwBFcVO163O4WjUlC9yjtrwJVbk8CahMnCi0nLEXpkpJlcoG0.fCWrRtZ5iv3RlZZMIRQjQlQa7BpRQESW8nubYxK7md8&amp;dib_tag=se&amp;keywords=the+handsome+host&amp;qid=1773344139&amp;sprefix=the+handsome+hos%2Caps%2C224&amp;sr=8-1" target="_blank" rel="noopener">Buy on Amazon</a>
   </div>
 </nav>
 
+
+<main id="main">
 
 <!-- ─── HERO ─── -->
 <section class="hero">
@@ -753,7 +844,7 @@
         </svg>
         Buy on Amazon
       </a>
-      <a class="btn-ghost" href="file:///C:/Users/Jacki/Downloads/UPLOAD_ME.html#about">Learn More ↓</a>
+      <a class="btn-ghost" href="#about">Learn More ↓</a>
     </div>
   </div>
 
@@ -1102,9 +1193,11 @@
 </section>
 
 
+</main>
+
 <!-- ─── FOOTER ─── -->
 <footer>
-  <p>© 2025 The Handsome Host <span>·</span> Jacalyn Stames <span>·</span> All Rights Reserved</p>
+  <p>© 2026 The Handsome Host <span>·</span> Jacalyn Stames <span>·</span> All Rights Reserved</p>
 </footer>
 
 
@@ -1116,6 +1209,21 @@
     });
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
+
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.getElementById('nav-links');
+  if (navToggle && navLinks) {
+    navToggle.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
 </script>
 
 
