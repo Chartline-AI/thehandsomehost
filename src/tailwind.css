@@ -2,8 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Override button shapes to pill */
+/* =========================================================
+   Design refresh — overrides layered on top of inline CSS
+   ========================================================= */
 @layer utilities {
+
+  /* ─── #1 + #2: Tighter letter-spacing, less all-caps  ─── */
+  .eyebrow,
+  .cta-eyebrow,
+  .section-eyebrow {
+    letter-spacing: .14em !important;
+    text-transform: none !important;
+    font-size: .9rem !important;
+    font-weight: 400 !important;
+    font-style: italic;
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    color: rgba(245, 240, 232, .85) !important;
+  }
+  .fine-print,
+  .card-caption,
+  .author-tag-role {
+    letter-spacing: .12em !important;
+  }
+  .nav-link {
+    letter-spacing: .1em !important;
+  }
+
+  /* ─── #3: Hero heading one-line italic treatment (handled in HTML)  ─── */
+  .hero h1 {
+    font-size: clamp(3rem, 7vw, 5.2rem) !important;
+    line-height: 1.05 !important;
+    letter-spacing: -.01em !important;
+  }
+  .hero h1 em {
+    font-style: italic;
+  }
+
+  /* ─── #4: Warmer coral, used sparingly  ─── */
+  :root {
+    --coral: #CC6B5C !important;
+  }
+  /* The coral strip keeps coral as primary (signature element) */
+  /* Elsewhere we swap decorative coral for ivory/navy  */
+  .hero-author-quote { border-left-color: rgba(201, 168, 76, .6) !important; }
+  .quote-divider { background: var(--brass) !important; }
+  .section-eyebrow.coral { color: var(--coral) !important; }
+
+  /* ─── #5: Boost brass opacity on dark surfaces  ─── */
+  .section-eyebrow {
+    color: rgba(201, 168, 76, .95) !important;
+  }
+
+  /* ─── #6 + #7: Softer, larger card radii; remove hairline borders; add subtle shadows  ─── */
   .btn-pill,
   .btn-brass,
   .btn-ghost,
@@ -11,12 +61,63 @@
   .nav-buy {
     border-radius: 9999px !important;
   }
-
-  /* Slightly rounded cards (less boxy than the current 2px radius) */
   .recipe-card,
   .gift-card,
   .bar-card,
-  .pillar-card {
-    border-radius: 14px !important;
+  .pillar-card,
+  .illus-img-wrap,
+  .author-portrait-wrap,
+  .about-book-image {
+    border-radius: 24px !important;
+    border: none !important;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, .08), 0 1px 3px rgba(0, 0, 0, .06) !important;
+  }
+  .recipe-card:hover,
+  .gift-card:hover,
+  .bar-card:hover {
+    box-shadow: 0 10px 36px rgba(0, 0, 0, .16), 0 3px 8px rgba(0, 0, 0, .08) !important;
+  }
+  .illus-img-wrap {
+    overflow: hidden;
+  }
+
+  /* ─── #8: Lighter nav, borderless, shadow on scroll  ─── */
+  nav {
+    border-bottom: none !important;
+    background: rgba(13, 31, 60, .85) !important;
+    transition: background .25s ease, box-shadow .25s ease, padding .25s ease !important;
+  }
+  nav.scrolled {
+    background: rgba(13, 31, 60, .96) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .18) !important;
+  }
+
+  /* ─── #9: Reveal with tiny scale  ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px) scale(.985);
+    transition: opacity .75s ease, transform .75s cubic-bezier(.2, .7, .3, 1) !important;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  /* ─── #10: Gift badge — circular brass, no emoji  ─── */
+  .gift-badge {
+    background: radial-gradient(circle at 30% 30%, #E5C877, #B5933E) !important;
+    box-shadow: 0 6px 20px rgba(201, 168, 76, .35),
+                inset 0 1px 0 rgba(255, 255, 255, .35),
+                inset 0 -2px 6px rgba(0, 0, 0, .15) !important;
+    border: 1px solid rgba(255, 255, 255, .2);
+  }
+  .gift-badge span {
+    color: #1A1A2E !important;
+    font-weight: 600 !important;
+  }
+
+  /* ─── #11: Drop grain overlay opacity  ─── */
+  body::after {
+    opacity: .2 !important;
   }
 }
