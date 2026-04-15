@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8">
-  
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://thehandsomehost.com; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Handsome Host — Hosting For Men Made Simple, Funny & Stress-Free</title>
   <meta name="description" content="The Handsome Host by Jacalyn Stames — a witty, illustrated guide that turns the man in your life into a confident, gracious host. The perfect gift for birthdays, holidays, and housewarmings.">
@@ -56,7 +57,6 @@
 @font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:300;font-display:swap;src:url('assets/fonts/cormorant-garamond-300-normal.woff2') format('woff2')}
 @font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/cormorant-garamond-400-normal.woff2') format('woff2')}
 @font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:600;font-display:swap;src:url('assets/fonts/cormorant-garamond-600-normal.woff2') format('woff2')}
-@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:700;font-display:swap;src:url('assets/fonts/cormorant-garamond-700-normal.woff2') format('woff2')}
 @font-face{font-family:'Jost';font-style:normal;font-weight:300;font-display:swap;src:url('assets/fonts/jost-300-normal.woff2') format('woff2')}
 @font-face{font-family:'Jost';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/jost-400-normal.woff2') format('woff2')}
 @font-face{font-family:'Jost';font-style:normal;font-weight:500;font-display:swap;src:url('assets/fonts/jost-500-normal.woff2') format('woff2')}
@@ -105,9 +105,9 @@
       display:flex; justify-content:space-between; align-items:center;
       padding:1.1rem 5rem;
       background:rgba(13,31,60,.96);
-      backdrop-filter:blur(12px);
       border-bottom:1px solid rgba(201,168,76,.2);
     }
+    nav.scrolled { backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); }
     .nav-logo {
       font-family:'Cormorant Garamond',serif;
       font-size:1.15rem; letter-spacing:.2em; font-weight:600;
@@ -327,7 +327,7 @@
       font-size:clamp(1.4rem,2.8vw,2.2rem); font-weight:400;
       color:var(--navy); font-style:italic; line-height:1.25;
     }
-    .gift-strip h2 strong { font-weight:700; font-style:normal; }
+    .gift-strip h2 strong { font-weight:600; font-style:normal; }
     .gift-strip a {
       margin-left:auto; flex-shrink:0; background:var(--white); color:var(--navy);
       padding:.85rem 2rem; font-family:'Jost',sans-serif; font-size:.78rem;
@@ -1265,7 +1265,7 @@
     if (!scrollTicking) { requestAnimationFrame(applyScrolled); scrollTicking = true; }
   };
   window.addEventListener('scroll', onScroll, { passive: true });
-  applyScrolled();
+  requestAnimationFrame(applyScrolled);
 
   const navToggle = document.querySelector('.nav-toggle');
   const navLinks = document.getElementById('nav-links');
