@@ -312,11 +312,11 @@
     .gift-strip h2 {
       font-family:'Cormorant Garamond',serif;
       font-size:clamp(1.4rem,2.8vw,2.2rem); font-weight:400;
-      color:var(--white); font-style:italic; line-height:1.25;
+      color:var(--navy); font-style:italic; line-height:1.25;
     }
     .gift-strip h2 strong { font-weight:700; font-style:normal; }
     .gift-strip a {
-      margin-left:auto; flex-shrink:0; background:var(--white); color:var(--coral);
+      margin-left:auto; flex-shrink:0; background:var(--white); color:var(--navy);
       padding:.85rem 2rem; font-family:'Jost',sans-serif; font-size:.78rem;
       letter-spacing:.14em; text-transform:uppercase; font-weight:700;
       text-decoration:none; transition:background .25s, transform .2s;
@@ -495,9 +495,9 @@
     footer {
       background:var(--charcoal); padding:2.2rem 0;
       text-align:center; font-size:.68rem; letter-spacing:.12em;
-      text-transform:uppercase; color:rgba(245,240,232,.2);
+      text-transform:uppercase; color:rgba(245,240,232,.75);
     }
-    footer span { color:rgba(255,255,255,.2); margin:0 .6rem; }
+    footer span { color:rgba(245,240,232,.45); margin:0 .6rem; }
 
     /* ─── ANIMATIONS ─── */
     @keyframes fadeUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
@@ -567,6 +567,8 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
     }
+    @media (max-width:960px) { .recipes-grid { grid-template-columns:repeat(2,1fr); } }
+    @media (max-width:560px) { .recipes-grid { grid-template-columns:1fr; } }
     .recipe-card {
       background: var(--navy-mid);
       border: 1px solid rgba(255,255,255,.07);
@@ -837,7 +839,7 @@
 <main id="main">
 
 <!-- ─── HERO ─── -->
-<section class="hero">
+<section class="hero" role="banner">
   <div class="hero-line"></div>
 
   <div class="hero-left">
