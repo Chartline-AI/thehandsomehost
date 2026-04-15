@@ -321,6 +321,7 @@
       letter-spacing:.14em; text-transform:uppercase; font-weight:700;
       text-decoration:none; transition:background .25s, transform .2s;
       white-space:nowrap; box-shadow:0 4px 18px rgba(0,0,0,.15);
+      border-radius:9999px;
     }
     .gift-strip a:hover { background:var(--ivory); transform:translateY(-2px); }
 
@@ -774,18 +775,17 @@
       font-size:1.05rem; color:var(--slate); font-weight:300; margin-top:.3rem;
     }
     .gift-cards-grid {
-      display:grid; grid-template-columns:repeat(4,1fr); gap:0;
-      border:1px solid rgba(245,240,232,.1);
+      display:grid; grid-template-columns:repeat(4,1fr); gap:1.25rem;
     }
+    @media (max-width:960px) { .gift-cards-grid { grid-template-columns:repeat(2,1fr); } }
+    @media (max-width:480px) { .gift-cards-grid { grid-template-columns:1fr; } }
     .gift-card {
       background:var(--ivory-warm);
       padding:2.8rem 1.8rem 2.4rem;
       display:flex; flex-direction:column; align-items:center; justify-content:center;
       text-align:center; cursor:pointer; position:relative;
       transition:background .3s, transform .3s;
-      border-right:1px solid rgba(245,240,232,.1);
     }
-    .gift-card:last-child { border-right:none; }
     .gift-card::after {
       content:''; position:absolute; bottom:0; left:0; right:0; height:3px;
       background:var(--coral); transform:scaleX(0); transform-origin:center;
