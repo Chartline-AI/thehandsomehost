@@ -49,7 +49,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="images/book-cover.jpg">
+  <link rel="preload" as="image" href="images/book-cover.webp" type="image/webp" imagesrcset="images/book-cover.webp" fetchpriority="high">
   <link href="./assets/tailwind.css" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -867,7 +867,10 @@
       <div class="gift-badge" aria-label="Now available on Amazon">
         <span style="font-size:.62rem; letter-spacing:.08em; line-height:1.5;">Now on<br>Amazon</span>
       </div>
-      <img class="book-img" src="images/book-cover.jpg" alt="The Handsome Host book cover">
+      <picture>
+        <source type="image/webp" srcset="images/book-cover.webp">
+        <img class="book-img" src="images/book-cover.jpg" alt="The Handsome Host book cover" width="600" height="600" fetchpriority="high" decoding="async">
+      </picture>
       <div class="book-glare"></div>
     </div>
   </div>
@@ -1085,7 +1088,10 @@
 
     <div class="illus-panel reveal">
       <div class="illus-img-wrap">
-        <img src="images/illustration-messy-party.png" alt="Illustration — co-hosting chaos in the kitchen" loading="lazy">
+        <picture>
+          <source type="image/webp" srcset="images/illustration-messy-party.webp">
+          <img src="images/illustration-messy-party.png" alt="Illustration — co-hosting chaos in the kitchen" width="480" height="448" loading="lazy" decoding="async">
+        </picture>
         <div class="illus-overlay">
           <span class="illus-chapter">The Essentials</span>
           <p class="illus-caption">Some things you really do need to know before the guests arrive.</p>
@@ -1132,7 +1138,10 @@
           <span class="tag-icon" aria-hidden="true">😬</span> Before
         </div>
         <div class="bar-card-img-wrap">
-          <img src="images/illustration-messy-bar.jpg" alt="Messy, disorganized bar — illustration from The Handsome Host" loading="lazy">
+          <picture>
+            <source type="image/webp" srcset="images/illustration-messy-bar.webp">
+            <img src="images/illustration-messy-bar.jpg" alt="Messy, disorganized bar — illustration from The Handsome Host" width="2000" height="1165" loading="lazy" decoding="async">
+          </picture>
         </div>
       </div>
 
@@ -1141,7 +1150,10 @@
           <span class="tag-icon" aria-hidden="true">✓</span> After
         </div>
         <div class="bar-card-img-wrap">
-          <img src="images/illustration-clean-bar.jpg" alt="Clean, well-organized bar setup — illustration from The Handsome Host" loading="lazy">
+          <picture>
+            <source type="image/webp" srcset="images/illustration-clean-bar.webp">
+            <img src="images/illustration-clean-bar.jpg" alt="Clean, well-organized bar setup — illustration from The Handsome Host" width="2000" height="1391" loading="lazy" decoding="async">
+          </picture>
         </div>
       </div>
     </div>
