@@ -545,6 +545,14 @@
       .hero-left { padding:3rem 1.5rem 2rem; }
       .container { padding:0 1.5rem; }
       .gift-cards-grid { grid-template-columns:1fr 1fr; }
+      .recipes-grid { grid-template-columns:1fr; }
+    }
+    /* Narrow phones: single-column everything so cards can't overflow */
+    @media (max-width:480px) {
+      .gift-cards-grid { grid-template-columns:1fr; }
+      .recipes-grid { grid-template-columns:1fr; }
+      .bar-cards { grid-template-columns:1fr; }
+      .pillars-grid { grid-template-columns:1fr; }
     }
 
     /* ─── RECIPES ─── */
