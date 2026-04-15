@@ -736,6 +736,12 @@
       padding:5rem 4rem;
       background: linear-gradient(135deg, var(--navy) 0%, #142240 100%);
     }
+    @media (max-width:960px) {
+      .illus-gallery-inner { grid-template-columns:1fr; min-height:0; }
+      .illus-panel { padding:2.5rem 2rem 0; }
+      .illus-img-wrap { max-width:420px; margin:0 auto; }
+      .illus-text-panel { padding:2.5rem 2rem 3.5rem; }
+    }
 
     /* ─── MARQUEE TICKER ─── */
     .marquee-wrap {
