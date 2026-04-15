@@ -69,13 +69,14 @@
       --white:       #FFFFFF;
     }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
 
     body {
       background: var(--ivory);
       color: var(--charcoal);
       font-family: 'Jost', sans-serif;
       overflow-x: hidden;
+      max-width: 100vw;
     }
 
     /* Grain overlay */
@@ -718,6 +719,7 @@
       border-top:1px solid rgba(255,255,255,.08);
       border-bottom:1px solid rgba(255,255,255,.08);
       padding:.75rem 0; overflow:hidden; position:relative; z-index:10;
+      width:100%; max-width:100vw;
     }
     .marquee-track {
       display:flex; width:max-content;
