@@ -32,6 +32,8 @@ The inline CSS in `index.html` defines all custom components (`.hero`, `.nav-*`,
 
 GitHub Pages, deploying directly from `main` at the repo root. Push to `main` → live within ~2 minutes. The `CNAME` file sets the custom domain (`thehandsomehost.com`). No build step runs on the server.
 
+**Always work directly on `main`.** Never create feature branches or pull requests. When asked to commit and push, push to `main` — this immediately updates the live site at thehandsomehost.com.
+
 ### Images
 
 All in `images/`. Book cover ships in both `.jpg` and `.webp` (with a `300w` variant for the cover). Illustrations ship as `.webp` with `.jpg`/`.png` fallbacks inside `<picture>` elements.
